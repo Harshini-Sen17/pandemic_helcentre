@@ -1,0 +1,69 @@
+@layout('layouts.app')
+
+
+@section('content')
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('assets/img/home-bg3.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Helping Hands </h1>
+          <span class="subheading">A tiny Help may Save Lives</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+  <div class="search-container">
+   <form action="/filter" method="POST">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+   </form>
+    </div>
+    </ br>
+    <div class="hide">Filter specific tag or location</div>
+    <div class="col-lg-8 col-md-10 mx-auto">
+     @if(posts.length != 0)
+      @each(post in posts)
+        <div class="post-preview">
+          <a href="/post/{{ post._id }}">
+            <h2 class="post-title">
+              {{ post.title }}
+              
+            </h2>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">{{ post.username }}</a>
+            on {{ post.createdAt.toDateString() }}
+          @if(post.helped)
+          <span><i class="fa fa-check-square-o ml-3" style="font-size:28px;color:green"></i></span>
+          @endif
+          </p>
+        </div>
+        <hr>
+      @endeach
+      @else
+      <div class="post-preview">
+       <p>No Post Found !</p>
+       </div>
+       @endif
+      <!-- Pager -->
+      <div class="clearfix"> 
+        @if(auth)        
+        <a class="btn btn-primary float-right" href="/posts/new/">Create New Post &rarr;</a>
+        @endif
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+@endsection 
+ 
+ 

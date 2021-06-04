@@ -31,7 +31,7 @@ const app = new express();
 
 app.set('views', __dirname + '/views');
 
-
+const PORT = process.env.PORT || 3000;
 
 
  mongoose.connect('mongodb://Harshini:Harshini28@cluster0-shard-00-00.tflak.mongodb.net:27017,cluster0-shard-00-01.tflak.mongodb.net:27017,cluster0-shard-00-02.tflak.mongodb.net:27017/Blog?ssl=true&replicaSet=atlas-p4sej9-shard-0&authSource=admin&retryWrites=true&w=majority', {
@@ -99,6 +99,6 @@ app.get('/contact', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/contact.html'));
 });
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log("App listening on port 4000");
 });

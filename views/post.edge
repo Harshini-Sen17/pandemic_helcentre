@@ -97,8 +97,10 @@
         </div>
       </div>
     </article>
+    <h6 >Contact : {{post.contact}}</h5>
 
     <hr>
+
   @if(post.userId == ui )  
      <a class="btn btn-primary float-right mr-5" href="/post/delete/{{ post._id }}">Delete </a>
     @if(post.helped == false ) 
